@@ -1,0 +1,44 @@
+﻿<Window x:Class="CalendarTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:CalendarTest"
+        Title="MainWindow" Height="350" Width="525"
+        
+        DataContext="{Binding MainPageViewModel, Source={StaticResource Locator}}">
+    
+    <StackPanel>
+
+        <TextBox Name="ID"
+                 Width="150"
+                 Margin="15"
+                 HorizontalAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Model.CustomerId" 
+                         UpdateSourceTrigger="PropertyChanged">
+                    <!--<Binding.ValidationRules>
+                        <m:IsAlphaOnlyValidator ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>-->
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
+        
+        <TextBox Name="CustomerName"
+                 Width="150"
+                 Margin="15"
+                 HorizontalAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Model.CustomerName" 
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <m:IsAlphaOnlyValidator ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox Name="IsDirty"
+                 Margin="15"
+                 Text="{Binding IsDirty, Mode=OneWay, StringFormat=Is Dirty: {0}}" />
+    </StackPanel>
+</Window>
